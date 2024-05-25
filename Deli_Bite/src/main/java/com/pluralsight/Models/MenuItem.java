@@ -31,5 +31,9 @@ public abstract class MenuItem
         this.price = price;
     }
 
-    public abstract String getDetails();
+    @Override
+    public String toString() {
+        return String.format("Item: %s, Price: $%.2f", name, price);
+    }
+
 }

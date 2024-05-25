@@ -79,11 +79,59 @@ public class Sandwich extends MenuItem
         this.toppings = toppings;
     }
 
-    
+    @Override
+    public double getPrice() {
+        double basePrice = 0;
+        switch (size) {
+            case "4\"":
+                basePrice = BASE_PRICE_4;
+                break;
+            case "8\"":
+                basePrice = BASE_PRICE_8;
+                break;
+            case "12\"":
+                basePrice = BASE_PRICE_12;
+                break;
+        }
+
+        double meatPrice = 0;
+        double cheesePrice = 0;
+        double extraMeatPrice = 0;
+        double extraCheesePrice = 0;
+
+        for (String topping : toppings) {
+            switch (topping.toLowerCase()) {
+                case "steak":
+                case "ham":
+                case "salami":
+                case "roast beef":
+                case "chicken":
+                case "bacon":
+                    meatPrice += (size.equals("4\"") ? MEAT_PRICE_4 : size.equals("8\"") ? MEAT_PRICE_8 : MEAT_PRICE_12);
+                    break;
+                case "extra meat":
+                    extraMeatPrice += (size.equals("4\"") ? EXTRA_MEAT_PRICE_4 : size.equals("8\"") ? EXTRA_MEAT_PRICE_8 : EXTRA_MEAT_PRICE_12);
+                    break;
+                case "american":
+                case "provolone":
+                case "cheddar":
+                case "swiss":
+                    cheesePrice += (size.equals("4\"") ? CHEESE_PRICE_4 : size.equals("8\"") ? CHEESE_PRICE_8 : CHEESE_PRICE_12);
+                    break;
+                case "extra cheese":
+                    extraCheesePrice += (size.equals("4\"") ? EXTRA_CHEESE_PRICE_4 : size.equals("8\"") ? EXTRA_CHEESE_PRICE_8 : EXTRA_CHEESE_PRICE_12);
+                    break;
+
+            }
+        }
+
+        return basePrice + meatPrice + cheesePrice + extraMeatPrice + extraCheesePrice;
+    }
 
     @Override
-    public String getDetails() {
+    public String toString() {
         return String.format("Sandwich: %s, Bread: %s, Size: %s, Toasted: %s, Toppings: %s, Price: $%.2f",
                 getName(), breadType, size, toasted ? "Yes" : "No", toppings, getPrice());
     }
+
 }
