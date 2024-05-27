@@ -8,7 +8,7 @@ public class Drink extends MenuItem {
     private static final double BASE_PRICE_MEDIUM = 2.00;
     private static final double BASE_PRICE_LARGE = 2.50;
 
-    public Drink(String name, String size) {
+    public Drink(String name, String size, double v) {
         super(name, 0); // Initial price is set to 0, it will be calculated dynamically
         this.size = size;
     }
