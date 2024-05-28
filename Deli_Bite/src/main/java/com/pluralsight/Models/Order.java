@@ -34,7 +34,11 @@ public class Order {
     }
 
     public double getTotalPrice() {
-        return totalPrice;
+        double total = 0;
+        for (MenuItem item : items) {
+            total += item.getPrice();
+        }
+        return total;
     }
 
     // Method to display order details

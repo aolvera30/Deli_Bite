@@ -1,14 +1,23 @@
 package com.pluralsight.UserInterface;
 
+import com.pluralsight.Data.OrderData;
 import com.pluralsight.Models.*;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 
 public class Ui {
-    private static final Scanner userInput = new Scanner(System.in);
+    private static Scanner userInput = new Scanner(System.in);
+
+    private void showHomeScreen() {
+        System.out.println("\n--- Home Screen ---");
+        System.out.println("1. New Order");
+        System.out.println("0. Exit");
+        System.out.print("Enter your choice: ");
+    }
 
     public void start() {
         while (true) {
@@ -25,10 +34,13 @@ public class Ui {
         }
     }
 
-    private void showHomeScreen() {
-        System.out.println("\n--- Home Screen ---");
-        System.out.println("1. New Order");
-        System.out.println("0. Exit");
+    private void showOrderScreen() {
+        System.out.println("\n--- Order Screen ---");
+        System.out.println("1. Add Sandwich");
+        System.out.println("2. Add Drink");
+        System.out.println("3. Add Chips");
+        System.out.println("4. Checkout");
+        System.out.println("0. Cancel Order");
         System.out.print("Enter your choice: ");
     }
 
@@ -62,18 +74,8 @@ public class Ui {
         }
     }
 
-    private void showOrderScreen() {
-        System.out.println("\n--- Order Screen ---");
-        System.out.println("1. Add Sandwich");
-        System.out.println("2. Add Drink");
-        System.out.println("3. Add Chips");
-        System.out.println("4. Checkout");
-        System.out.println("0. Cancel Order");
-        System.out.print("Enter your choice: ");
-    }
-
     private Sandwich addSandwich() {
-        System.out.print("Name: ");
+        System.out.print("Order Name: ");
         String name = userInput.nextLine();
 
         System.out.print("Select your bread (white, wheat, rye, wrap): ");
@@ -89,23 +91,39 @@ public class Ui {
         System.out.print("Enter meat toppings (comma separated, or 'none'): ");
         List<String> meatToppings = Arrays.asList(userInput.nextLine().split(","));
 
-        System.out.print("Would you like extra meat? (yes/no): ");
-        boolean extraMeat = userInput.nextLine().equalsIgnoreCase("yes");
+        boolean extraMeat = false;
+        if (!meatToppings.contains("none")) {
+            System.out.print("Would you like extra meat? (yes/no): ");
+            extraMeat = userInput.nextLine().equalsIgnoreCase("yes");
+        } else {
+            meatToppings = new ArrayList<>(); // Clear meat toppings if 'none' was selected
+        }
 
         System.out.println("Available cheese toppings: american, provolone, cheddar, swiss");
         System.out.print("Enter cheese toppings (comma separated, or 'none'): ");
         List<String> cheeseToppings = Arrays.asList(userInput.nextLine().split(","));
 
-        System.out.print("Would you like extra cheese? (yes/no): ");
-        boolean extraCheese = userInput.nextLine().equalsIgnoreCase("yes");
+        boolean extraCheese = false;
+        if (!cheeseToppings.contains("none")) {
+            System.out.print("Would you like extra cheese? (yes/no): ");
+            extraCheese = userInput.nextLine().equalsIgnoreCase("yes");
+        } else {
+            cheeseToppings = new ArrayList<>(); // Clear cheese toppings if 'none' was selected
+        }
 
         System.out.println("Available regular toppings: lettuce, peppers, onions, tomatoes, jalapenos, cucumbers, pickles, guacamole, mushrooms");
         System.out.print("Enter regular toppings (comma separated, or 'none'): ");
         List<String> regularToppings = Arrays.asList(userInput.nextLine().split(","));
+        if (regularToppings.contains("none")) {
+            regularToppings = new ArrayList<>(); // Clear regular toppings if 'none' was selected
+        }
 
         System.out.println("Available sauce toppings: mayo, mustard, ketchup, ranch, thousand islands, vinaigrette");
         System.out.print("Enter sauce toppings (comma separated, or 'none'): ");
         List<String> sauceToppings = Arrays.asList(userInput.nextLine().split(","));
+        if (sauceToppings.contains("none")) {
+            sauceToppings = new ArrayList<>(); // Clear sauce toppings if 'none' was selected
+        }
 
         // Combine all toppings into one list
         List<String> allToppings = new ArrayList<>();
@@ -140,7 +158,7 @@ public class Ui {
     }
 
     private Drink addDrink() {
-        System.out.print("Enter drink name: ");
+        System.out.print("Enter drink selection (Coke, Orange Fanta, Lemonade): ");
         String name = userInput.nextLine();
 
         System.out.print("Select drink size (small, medium, large): ");
@@ -173,9 +191,23 @@ public class Ui {
         return new Chips(name, price);
     }
 
+
+
     private boolean confirmCheckout(Order order) {
         order.displayOrderDetails();
         System.out.print("Confirm checkout? (yes/no): ");
-        return userInput.nextLine().equalsIgnoreCase("yes");
+        boolean confirmed = userInput.nextLine().equalsIgnoreCase("yes");
+
+        if (confirmed) {
+            try {
+                OrderData.saveOrder(order);
+                System.out.println("Order saved successfully.");
+            } catch (IOException e) {
+                System.out.println("Error saving order: " + e.getMessage());
+            }
+        }
+
+        return confirmed;
     }
+
 }
