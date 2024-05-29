@@ -25,46 +25,61 @@ public class OrderData {
         String filename = RECEIPTS_FOLDER + "/" + timestamp + ".txt";
 
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(filename))) {
-            writer.write("===== RECEIPT =====");
+            writer.write("*************************************");
             writer.newLine();
-            writer.write("Order Date: " + new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date()));
+            writer.write("*            RECEIPT                *");
             writer.newLine();
-            writer.write("===================");
+            writer.write("*************************************");
+            writer.newLine();
+            writer.write("-------------------------------------");
+            writer.newLine();
+            writer.write(String.format("Order Date: %s", new SimpleDateFormat("yyyy-MM-dd").format(new Date())));
+            writer.newLine();
+            writer.write(String.format("Time: %s", new SimpleDateFormat("HH:mm:ss").format(new Date())));
+            writer.newLine();
+            writer.write("-------------------------------------");
             writer.newLine();
 
             for (MenuItem item : order.getItems()) {
-                writer.write(itemToString(item));
+                writer.write(formatItemString(item));
+                writer.newLine();
+                writer.write("-------------------------------------");
                 writer.newLine();
             }
 
-            writer.write("===================");
-            writer.newLine();
             writer.write(String.format("Total Price: $%.2f", order.getTotalPrice()));
             writer.newLine();
-            writer.write("===================");
+            writer.write("-------------------------------------");
             writer.newLine();
             writer.write("Thank you for your order!");
             writer.newLine();
+            writer.write("*************************************");
         }
 
         System.out.println("Order saved to file: " + filename);
     }
 
-
-    private static String itemToString(MenuItem item) {
+    private static String formatItemString(MenuItem item) {
         if (item instanceof Sandwich) {
             Sandwich sandwich = (Sandwich) item;
-            List<String> toppings = sandwich.getToppings();
-            toppings.removeIf(topping -> topping.equalsIgnoreCase("none"));
-            return String.format("Sandwich:\nName: %s\nBread: %s\nSize: %s\nToasted: %s\nToppings: %s\nPrice: $%.2f",
-                    sandwich.getName(), sandwich.getBreadType(), sandwich.getSize(),
-                    sandwich.isToasted() ? "Yes" : "No", String.join(", ", toppings), sandwich.getPrice());
+            StringBuilder sb = new StringBuilder();
+            sb.append("Sandwich:\n");
+            sb.append("  Name: ").append(sandwich.getName()).append("\n");
+            sb.append("  Bread: ").append(sandwich.getBreadType()).append("\n");
+            sb.append("  Size: ").append(sandwich.getSize()).append("\n");
+            sb.append("  Toasted: ").append(sandwich.isToasted() ? "Yes" : "No").append("\n");
+            sb.append("  Toppings:\n");
+            for (String topping : sandwich.getToppings()) {
+                sb.append("    - ").append(topping).append("\n");
+            }
+            sb.append("  Price: $").append(String.format("%.2f", sandwich.getPrice()));
+            return sb.toString();
         } else if (item instanceof Drink) {
             Drink drink = (Drink) item;
-            return String.format("Drink:\nName: %s\nSize: %s\nPrice: $%.2f", drink.getName(), drink.getSize(), drink.getPrice());
+            return String.format("Drink:\n  Name: %s\n  Size: %s\n  Price: $%.2f", drink.getName(), drink.getSize(), drink.getPrice());
         } else if (item instanceof Chips) {
             Chips chips = (Chips) item;
-            return String.format("Chips:\nName: %s\nPrice: $%.2f", chips.getName(), chips.getPrice());
+            return String.format("Chips:\n  Name: %s\n  Price: $%.2f", chips.getName(), chips.getPrice());
         }
         return "";
     }

@@ -1,0 +1,28 @@
+*************************************
+*            RECEIPT                *
+*************************************
+-------------------------------------
+Order Date: 2024-05-29
+Time: 12:35:23
+-------------------------------------
+Sandwich:
+  Name: bob
+  Bread: rye
+  Size: 4"
+  Toasted: Yes
+  Toppings:
+    - steak
+    - american
+    -  lettuce
+    -  peppers
+    -  onions
+    -  tomatoes
+    -  jalapenos
+    -  cucumbers
+    - mayo
+  Price: $7.25
+-------------------------------------
+Total Price: $7.25
+-------------------------------------
+Thank you for your order!
+*************************************
