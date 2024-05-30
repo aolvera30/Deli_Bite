@@ -54,7 +54,9 @@ public class Ui {
     }
 
     private void takeNewOrder() {
-        Order order = new Order();
+        System.out.print(Colors.YELLOW + "Enter order name: " + Colors.RESET);
+        String orderName = userInput.nextLine();
+        Order order = new Order(orderName);
 
         while (true) {
             showOrderScreen();
@@ -84,22 +86,18 @@ public class Ui {
     }
 
     private Sandwich addSandwich() {
-        System.out.print(Colors.YELLOW + "Order Name: " + Colors.RESET);
-        String name = userInput.nextLine();
-
-        System.out.print(Colors.YELLOW + "Select your bread (white, wheat, rye, wrap): " + Colors.RESET);
+        System.out.print(Colors.YELLOW + "Enter bread selection (white, wheat, rye, wrap): " + Colors.RESET);
         String breadType = userInput.nextLine();
 
-        System.out.print(Colors.YELLOW + "Select sandwich size (4\", 8\", 12\"): " + Colors.RESET);
+        System.out.print(Colors.YELLOW + "Enter sandwich size (4\", 8\", 12\"): " + Colors.RESET);
         String size = userInput.nextLine();
 
-        System.out.print(Colors.YELLOW + "Would you like the sandwich toasted? (yes/no): " + Colors.RESET);
+        System.out.print(Colors.YELLOW + "Would you like your sandwich toasted? (yes/no): " + Colors.RESET);
         boolean toasted = userInput.nextLine().equalsIgnoreCase("yes");
 
         System.out.println(Colors.YELLOW + "Available meat toppings: steak, ham, salami, roast beef, chicken, bacon" + Colors.RESET);
         System.out.print(Colors.YELLOW + "Enter meat toppings (comma separated, or 'none'): " + Colors.RESET);
         List<String> meatToppings = Arrays.asList(userInput.nextLine().split(","));
-
         boolean extraMeat = false;
         if (!meatToppings.contains("none")) {
             System.out.print(Colors.YELLOW + "Would you like extra meat? (yes/no): " + Colors.RESET);
@@ -111,7 +109,6 @@ public class Ui {
         System.out.println(Colors.YELLOW + "Available cheese toppings: american, provolone, cheddar, swiss" + Colors.RESET);
         System.out.print(Colors.YELLOW + "Enter cheese toppings (comma separated, or 'none'): " + Colors.RESET);
         List<String> cheeseToppings = Arrays.asList(userInput.nextLine().split(","));
-
         boolean extraCheese = false;
         if (!cheeseToppings.contains("none")) {
             System.out.print(Colors.YELLOW + "Would you like extra cheese? (yes/no): " + Colors.RESET);
@@ -149,28 +146,14 @@ public class Ui {
             allToppings.add("extra cheese");
         }
 
-        Sandwich sandwich = new Sandwich(name, breadType, size, toasted, allToppings);
-
-        double basePrice = sandwich.getBasePrice();
-        double meatPrice = sandwich.getToppingPrice(meatToppings, Sandwich.MEAT_PRICE_4, Sandwich.MEAT_PRICE_8, Sandwich.MEAT_PRICE_12);
-        double cheesePrice = sandwich.getToppingPrice(cheeseToppings, Sandwich.CHEESE_PRICE_4, Sandwich.CHEESE_PRICE_8, Sandwich.CHEESE_PRICE_12);
-        double extraMeatPrice = extraMeat ? sandwich.getToppingPrice(Arrays.asList("extra meat"), Sandwich.EXTRA_MEAT_PRICE_4, Sandwich.EXTRA_MEAT_PRICE_8, Sandwich.EXTRA_MEAT_PRICE_12) : 0;
-        double extraCheesePrice = extraCheese ? sandwich.getToppingPrice(Arrays.asList("extra cheese"), Sandwich.EXTRA_CHEESE_PRICE_4, Sandwich.EXTRA_CHEESE_PRICE_8, Sandwich.EXTRA_CHEESE_PRICE_12) : 0;
-        double totalPrice = basePrice + meatPrice + cheesePrice + extraMeatPrice + extraCheesePrice;
-
-        System.out.printf(Colors.RED + "Base Price: $%.2f, Meat Price: $%.2f, Cheese Price: $%.2f, Extra Meat Price: $%.2f, Extra Cheese Price: $%.2f, Total Price: $%.2f\n" + Colors.RESET,
-                basePrice, meatPrice, cheesePrice, extraMeatPrice, extraCheesePrice, totalPrice);
-
-        sandwich.setPrice(totalPrice);
-
-        return sandwich;
+        return new Sandwich("Sandwich", breadType, size, toasted, allToppings);
     }
 
     private Drink addDrink() {
-        System.out.print(Colors.YELLOW + "Enter drink selection (Coke, Orange Fanta, Lemonade): " + Colors.RESET);
-        String name = userInput.nextLine();
+        System.out.print(Colors.YELLOW + "Enter drink selection (coke, orange fanta, Lemonade, water): " + Colors.RESET);
+        String selection = userInput.nextLine();
 
-        System.out.print(Colors.YELLOW + "Select drink size (small, medium, large): " + Colors.RESET);
+        System.out.print(Colors.YELLOW + "Enter drink size (small, medium, large): " + Colors.RESET);
         String size = userInput.nextLine();
 
         double price;
@@ -188,19 +171,20 @@ public class Ui {
                 price = 0;
         }
 
-        return new Drink(name, size, price);
+        return new Drink(selection, size, price);
     }
 
     private Chips addChips() {
         System.out.print(Colors.YELLOW + "Enter chip selection (Doritos, Hot Cheetos, Lays, or Ruffles): " + Colors.RESET);
-        String name = userInput.nextLine();
+        String selection = userInput.nextLine();
 
         double price = 1.50; // Fixed price for chips
 
-        return new Chips(name, price);
+        return new Chips(selection, price);
     }
 
     private boolean confirmCheckout(Order order) {
+        System.out.println(Colors.YELLOW);  // Start yellow color
         order.displayOrderDetails();
         System.out.print(Colors.YELLOW + "Confirm checkout? (yes/no): " + Colors.RESET);
         boolean confirmed = userInput.nextLine().equalsIgnoreCase("yes");
@@ -208,7 +192,7 @@ public class Ui {
         if (confirmed) {
             try {
                 OrderData.saveOrder(order);
-                System.out.println(Colors.RED + "Order saved successfully." + Colors.RESET);
+                System.out.println(Colors.YELLOW + "Order saved successfully." + Colors.RESET);
             } catch (IOException e) {
                 System.out.println(Colors.RED + "Error saving order: " + e.getMessage() + Colors.RESET);
             }

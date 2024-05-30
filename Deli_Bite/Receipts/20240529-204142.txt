@@ -1,0 +1,46 @@
+*************************************
+*            RECEIPT                *
+*************************************
+Order Name: [Sandwich: Mateen
+Bread: wheat
+Size: 12"
+Toasted: Yes
+Toppings: steak, provolone, lettuce,  peppers,  onions,  tomatoes,  jalapenos,  cucumbers,  pickles,  guacamole,  mushrooms, thousand islands, extra meat
+Price: $15.25, Drink: coke, Size: medium, Price: $2.50, Chips: lays, Price: $1.50]
+-------------------------------------
+Order Date: 2024-05-29
+Time: 20:41:43
+-------------------------------------
+Item: Sandwich
+  Bread: wheat
+  Size: 12"
+  Toasted: Yes
+  Toppings:
+    - steak
+    - provolone
+    - lettuce
+    -  peppers
+    -  onions
+    -  tomatoes
+    -  jalapenos
+    -  cucumbers
+    -  pickles
+    -  guacamole
+    -  mushrooms
+    - thousand islands
+    - extra meat
+  Price: $15.25
+-------------------------------------
+Item: Drink
+  Selection: coke
+  Size: medium
+  Price: $2.50
+-------------------------------------
+Item: Chips
+  Selection: lays
+  Price: $1.50
+-------------------------------------
+Total Price: $19.25
+-------------------------------------
+Thank you for your order!
+*************************************

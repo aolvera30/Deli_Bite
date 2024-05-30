@@ -1,34 +1,29 @@
 *************************************
 *            RECEIPT                *
 *************************************
+Order Name: angelica
 -------------------------------------
 Order Date: 2024-05-29
-Time: 14:15:08
+Time: 21:29:53
 -------------------------------------
-Sandwich:
-  Name: Angelica
+Item: Sandwich
   Bread: wheat
   Size: 4"
-  Toasted: Yes
+  Toasted: No
   Toppings:
-    - steak
-    - american
-    - onions
     - cucumbers
-    - mayo
-    - extra meat
-  Price: $7.75
+  Price: $5.50
 -------------------------------------
-Drink:
-  Name: coke
+Item: Drink
+  Selection: coke
   Size: small
   Price: $2.00
 -------------------------------------
-Chips:
-  Name: lays
+Item: Chips
+  Selection: lays
   Price: $1.50
 -------------------------------------
-Total Price: $11.25
+Total Price: $9.00
 -------------------------------------
 Thank you for your order!
 *************************************

@@ -1,40 +1,32 @@
 package com.pluralsight.Models;
 
-public abstract class MenuItem
-{
-    private String name;
+public abstract class MenuItem {
+    private String item;
     private double price;
 
-    public MenuItem(String name, double price)
-    {
-        this.name = name;
+    public MenuItem(String item, double price) {
+        this.item = item;
         this.price = price;
     }
 
-
-    public String getName()
-    {
-        return name;
+    public String getItem() {
+        return item;
     }
 
-    public void setName(String name)
-    {
-        this.name = name;
+    public void setItem(String item) {
+        this.item = item;
     }
 
-    public double getPrice()
-    {
+    public double getPrice() {
         return price;
     }
 
-    public void setPrice(double price)
-    {
+    public void setPrice(double price) {
         this.price = price;
     }
 
     @Override
     public String toString() {
-        return String.format("Item: %s, Price: $%.2f", name, price);
+        return String.format("Item: %s, Price: $%.2f", item, price);
     }
-
 }

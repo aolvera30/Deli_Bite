@@ -1,28 +1,33 @@
 *************************************
 *            RECEIPT                *
 *************************************
+Order Name: Bob
 -------------------------------------
 Order Date: 2024-05-29
-Time: 12:35:23
+Time: 22:23:18
 -------------------------------------
-Sandwich:
-  Name: bob
-  Bread: rye
+Item: Sandwich
+  Bread: white
   Size: 4"
   Toasted: Yes
   Toppings:
     - steak
-    - american
-    -  lettuce
-    -  peppers
-    -  onions
-    -  tomatoes
+    - tomatoes
     -  jalapenos
     -  cucumbers
     - mayo
-  Price: $7.25
+  Price: $6.50
 -------------------------------------
-Total Price: $7.25
+Item: Drink
+  Selection: water
+  Size: medium
+  Price: $2.50
+-------------------------------------
+Item: Chips
+  Selection: lays
+  Price: $1.50
+-------------------------------------
+Total Price: $10.50
 -------------------------------------
 Thank you for your order!
 *************************************

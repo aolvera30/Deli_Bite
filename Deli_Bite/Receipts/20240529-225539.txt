@@ -1,0 +1,25 @@
+*************************************
+*            RECEIPT                *
+*************************************
+Order Name: angelica
+-------------------------------------
+Order Date: 2024-05-29
+Time: 22:55:39
+-------------------------------------
+Item: Sandwich
+  Bread: wrap
+  Size: 4"
+  Toasted: Yes
+  Toppings:
+    - steak
+    - onions
+    -  tomatoes
+    -  jalapenos
+    -  cucumbers
+    - mayo
+  Price: $6.50
+-------------------------------------
+Total Price: $6.50
+-------------------------------------
+Thank you for your order!
+*************************************

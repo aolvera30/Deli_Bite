@@ -30,8 +30,8 @@ public class Sandwich extends MenuItem {
     public static final double EXTRA_CHEESE_PRICE_12 = 0.90;
 
     // Constructor for creating new sandwich orders
-    public Sandwich(String name, String breadType, String size, boolean toasted, List<String> toppings) {
-        super(name, 0); // Initial price is set to 0, it will be calculated dynamically
+    public Sandwich(String item, String breadType, String size, boolean toasted, List<String> toppings) {
+        super(item, 0); // Initial price is set to 0, it will be calculated dynamically
         this.breadType = breadType;
         this.size = size;
         this.toasted = toasted;
@@ -39,8 +39,8 @@ public class Sandwich extends MenuItem {
     }
 
     // Constructor for loading saved sandwich orders with pre-calculated price
-    public Sandwich(String name, String breadType, String size, boolean toasted, List<String> toppings, double price) {
-        super(name, price);
+    public Sandwich(String item, String breadType, String size, boolean toasted, List<String> toppings, double price) {
+        super(item, price);
         this.breadType = breadType;
         this.size = size;
         this.toasted = toasted;
@@ -135,7 +135,7 @@ public class Sandwich extends MenuItem {
 
     @Override
     public String toString() {
-        return String.format("Sandwich: %s\nBread: %s\nSize: %s\nToasted: %s\nToppings: %s\nPrice: $%.2f",
-                getName(), breadType, size, toasted ? "Yes" : "No", String.join(", ", toppings), getPrice());
+        return String.format("Sandwich\n  Bread: %s\n  Size: %s\n  Toasted: %s\n  Toppings:\n    - %s\n  Price: $%.2f",
+                breadType, size, toasted ? "Yes" : "No", String.join("\n    - ", toppings), getPrice());
     }
 }

@@ -1,0 +1,32 @@
+*************************************
+*            RECEIPT                *
+*************************************
+Order Name: null
+-------------------------------------
+Order Date: 2024-05-29
+Time: 21:05:03
+-------------------------------------
+Item: Sandwich
+  Bread: wheat
+  Size: 4"
+  Toasted: Yes
+  Toppings:
+    - steak
+    - american
+    - cucumbers
+    - mayo
+  Price: $7.25
+-------------------------------------
+Item: Drink
+  Selection: coke
+  Size: small
+  Price: $2.00
+-------------------------------------
+Item: Chips
+  Selection: lays
+  Price: $1.50
+-------------------------------------
+Total Price: $10.75
+-------------------------------------
+Thank you for your order!
+*************************************

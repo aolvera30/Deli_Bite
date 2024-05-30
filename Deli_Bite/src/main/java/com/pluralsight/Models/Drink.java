@@ -8,8 +8,8 @@ public class Drink extends MenuItem {
     private static final double BASE_PRICE_MEDIUM = 2.50;
     private static final double BASE_PRICE_LARGE = 3.00;
 
-    public Drink(String name, String size, double v) {
-        super(name, 0); // Initial price is set to 0, it will be calculated dynamically
+    public Drink(String item, String size, double v) {
+        super(item, 0); // Initial price is set to 0, it will be calculated dynamically
         this.size = size;
     }
 
@@ -40,6 +40,6 @@ public class Drink extends MenuItem {
     @Override
     public String toString() {
         return String.format("Drink: %s, Size: %s, Price: $%.2f",
-                getName(), size, getPrice());
+                getItem(), size, getPrice());
     }
 }
