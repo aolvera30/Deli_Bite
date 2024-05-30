@@ -13,28 +13,21 @@ public class Order {
 
     public Order(String orderName) {
         this.orderName = orderName;
-        items = new ArrayList<>();
-        totalPrice = 0.0;
+        this.items = new ArrayList<>();
+        this.totalPrice = 0.0;
     }
 
     public String getOrderName() {
         return orderName;
     }
 
-    public void setOrderName(String orderName) {
-        this.orderName = orderName;
-    }
 
     public List<MenuItem> getItems() {
         return items;
     }
 
     public double getTotalPrice() {
-        double total = 0;
-        for (MenuItem item : items) {
-            total += item.getPrice();
-        }
-        return total;
+        return totalPrice;
     }
 
     // Method to add an item to the order
@@ -52,14 +45,5 @@ public class Order {
         System.out.printf("Total Price: " + Colors.GREEN + "$%.2f" + Colors.RESET + "%n", getTotalPrice());
         System.out.println(Colors.GREEN + "----------------------------" + Colors.RESET);
     }
-
-    // Method to calculate the total price of the order
-    public double calculateTotalPrice() {
-        totalPrice = 0.0;
-        for (MenuItem item : items) {
-            totalPrice += item.getPrice();
-        }
-        return totalPrice;
-    }
-
 }
+

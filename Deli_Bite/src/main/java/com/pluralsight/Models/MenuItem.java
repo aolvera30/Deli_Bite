@@ -13,17 +13,11 @@ public abstract class MenuItem {
         return item;
     }
 
-    public void setItem(String item) {
-        this.item = item;
-    }
 
     public double getPrice() {
         return price;
     }
 
-    public void setPrice(double price) {
-        this.price = price;
-    }
 
     @Override
     public String toString() {

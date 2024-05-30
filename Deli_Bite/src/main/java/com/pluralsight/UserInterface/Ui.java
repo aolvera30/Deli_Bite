@@ -13,9 +13,16 @@ public class Ui {
     private static Scanner userInput = new Scanner(System.in);
 
     private void showHomeScreen() {
-        System.out.println(Colors.GREEN + "\n*****************************");
-        System.out.println("*         DELI BITE         *");
-        System.out.println("*****************************" + Colors.RESET);
+        System.out.println(Colors.YELLOW+ "***************************************************************"+ Colors.RESET);
+        System.out.println(Colors.GREEN + "* ____            ___             ____         __             *"+ Colors.RESET);
+        System.out.println(Colors.GREEN + "*/\\  _`\\         /\\_ \\    __     /\\  _`\\    __/\\ \\__          *"+ Colors.RESET);
+        System.out.println(Colors.GREEN + "*\\ \\ \\/\\ \\     __\\//\\ \\  /\\_\\    \\ \\ \\L\\ \\ /\\_\\ \\ ,_\\    __   *"+ Colors.RESET);
+        System.out.println(Colors.GREEN + "* \\ \\ \\ \\ \\  /'__`\\ \\ \\ \\/\\ \\    \\ \\  _ <'\\/\\ \\ \\ \\/  /'__`\\  *"+ Colors.RESET);
+        System.out.println(Colors.GREEN + "*  \\ \\ \\_\\ \\/\\  __/ \\_\\ \\_\\ \\ \\    \\ \\ \\L\\ \\ \\ \\ \\ \\_/\\  __/  *"+ Colors.RESET);
+        System.out.println(Colors.GREEN + "*   \\ \\____/\\ \\____\\/\\____\\ \\_\\    \\ \\____/ \\ \\_\\ \\__\\ \\____\\ *"+ Colors.RESET);
+        System.out.println(Colors.GREEN + "*    \\/___/  \\/____/\\/____/ \\/_/     \\/___/   \\/_/\\/__/\\/____/*"+ Colors.RESET);
+        System.out.println(Colors.YELLOW+ "***************************************************************"+ Colors.RESET);
+
         System.out.println(Colors.YELLOW + "*****************************" + Colors.RESET);
         System.out.println(Colors.YELLOW + "*      Home Screen         *" + Colors.RESET);
         System.out.println(Colors.YELLOW + "*****************************" + Colors.RESET);

@@ -98,7 +98,7 @@ public class Sandwich extends MenuItem {
     public double getPrice() {
         double basePrice = getBasePrice();
 
-        // Calculate prices for regular toppings
+        // Calculate prices for toppings
         double meatPrice = 0;
         double cheesePrice = 0;
         double extraMeatPrice = 0;
@@ -126,7 +126,7 @@ public class Sandwich extends MenuItem {
                 case "extra cheese":
                     extraCheesePrice += getToppingPrice(List.of(topping), EXTRA_CHEESE_PRICE_4, EXTRA_CHEESE_PRICE_8, EXTRA_CHEESE_PRICE_12);
                     break;
-                // Add other cases for additional toppings if needed
+
             }
         }
 

@@ -13,14 +13,10 @@ public class Drink extends MenuItem {
         this.size = size;
     }
 
-    // Getter and setter for size
     public String getSize() {
         return size;
     }
 
-    public void setSize(String size) {
-        this.size = size;
-    }
 
     // Calculate price based on size
     @Override
@@ -39,7 +35,6 @@ public class Drink extends MenuItem {
 
     @Override
     public String toString() {
-        return String.format("Drink: %s, Size: %s, Price: $%.2f",
-                getItem(), size, getPrice());
+        return String.format("Drink\n  Selection: %s\n  Size: %s\n  Price: $%.2f", getItem(), size, getPrice());
     }
 }

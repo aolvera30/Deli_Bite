@@ -9,6 +9,6 @@ public class Chips extends MenuItem {
 
     @Override
     public String toString() {
-        return String.format("Chips: %s, Price: $%.2f", getItem(), getPrice());
+        return String.format("Chips\n  Selection: %s\n  Price: $%.2f", getItem(), getPrice());
     }
 }
